@@ -1,0 +1,85 @@
+.filter-card{
+  width: 220px;
+  height: auto;
+  background: #FFF;
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+padding: 15px;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+margin-bottom: 25px;
+}
+
+.filter{
+  display: flex;
+  flex-direction: column;
+}
+.filter p{
+  color: rgba(51, 51, 51, 0.70);
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.radio-label{
+  margin-left: 5px;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+.search-items{
+  max-height: 100px;
+  overflow-y: scroll;
+  padding: 10px 0;
+}
+.search-item{
+margin-bottom: 10px;
+}
+.search-item span{
+  margin-left: 5px;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+.brand-search{
+  height: 40px;
+  background: #F9F9F9;
+  width: 100%;
+  margin-bottom: 5px;
+  padding-left: 10px;
+}
+.basket-item{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.basket-price{
+  font-size: 10px;
+  font-weight: 500;
+  color: #2A59FE;
+}
+.basket-name{
+  font-size: 12px;
+  font-weight: 400;
+
+}
+.item-counter { min-width: 105px}
+.item-counter Button{ width: 35px; padding: 5px;}
+.item-counter .count-button{
+  background-color: rgb(240, 240, 240);
+  border: none;
+  color: black;
+}
+.item-counter .count-button:hover{
+  background-color: rgb(240, 240, 240);
+  color: black;
+}
+.checkout-info{
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+.checkout-info .checkout-price{
+  color: #2A59FE;
+  font-weight: 700;
+}

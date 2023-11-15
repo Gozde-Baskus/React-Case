@@ -1,0 +1,26 @@
+.product-item{
+    background-color: white;
+    padding: 10px;
+    margin: 20px 10px;
+}
+.product-image{
+    width: 150px;
+    height: 150px;
+    background-color: #C4C4C4;
+}
+.product-price{
+color: #2A59FE;
+font-size: 14px;
+font-weight: 500;
+margin: 10px 0;
+}
+.product-name{
+    font-size: 14px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+.product-add-button{
+    background-color:#2A59FE;
+    width: 100%;
+    color: white;
+}
