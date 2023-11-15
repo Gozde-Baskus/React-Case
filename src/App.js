@@ -12,8 +12,9 @@ import { BasketProvider } from "./providers/BasketProvider";
 
 function App() {
   return (
-    <BasketProvider>
+
       <ListProvider>
+            <BasketProvider>
         <Router>
           <div className="App">
             <Header />
@@ -23,8 +24,9 @@ function App() {
             </Routes>
           </div>
         </Router>
+        </BasketProvider>
       </ListProvider>
-    </BasketProvider>
+
   );
 }
 

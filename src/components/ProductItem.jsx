@@ -1,18 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useBasket } from "../providers/BasketProvider";
+import PriceText from "./PriceText";
 
 const ProductItem = ({ product }) => {
   const { name, image, price, id } = product;
-  const onAddToCart = () => {
-    const itemToAdd = {
-      name: name,
-      price: price,
-      count: 1,
-    };
 
-    const currentBasket = JSON.parse(localStorage.getItem("basketItems")) || [];
-    const updatedBasket = [...currentBasket, itemToAdd];
-    localStorage.setItem("basketItems", JSON.stringify(updatedBasket));
+  const { onAddToCart } = useBasket();
+
+  const handleAddToCartClick = () => {
+    onAddToCart(name, price, id);
   };
 
   return (
@@ -21,13 +18,13 @@ const ProductItem = ({ product }) => {
         <Link to={`/detail/${id}`}>
           <img className="product-image" />
           <div className="">
-            <div className="product-price"> {price} ₺</div>
+            <PriceText className="product-price">{price}</PriceText>
             <div className="product-name">{name}</div>
           </div>
         </Link>
         <button
           className="product-add-button font-bold py-1 px-2 rounded"
-          onClick={onAddToCart}
+          onClick={handleAddToCartClick}
         >
           Add to Cart
         </button>

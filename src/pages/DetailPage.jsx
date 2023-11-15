@@ -5,11 +5,17 @@ import { useParams } from 'react-router-dom';
 import apiService from "../services/apiService";
 import Basket from '../components/Basket';
 import Checkout from '../components/Checkout';
+import { useBasket } from '../providers/BasketProvider';
 
 
 const DetailPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const { onAddToCart } = useBasket();
+
+  const handleAddToCartClick = () => {
+    onAddToCart(product.name, product.price, id);
+  };
 
   useEffect(() => {
     apiService.get(`products/${id}`)
@@ -17,28 +23,7 @@ const DetailPage = () => {
       .catch(err => console.log('hata'))
   }, [id]);
 
-  const handleAddToBasket = () => {
-    const currentBasket = JSON.parse(localStorage.getItem('basketItems')) || [];
-    const existingItemIndex = currentBasket.findIndex(
-      (item) => item.name === product.name
-    );
 
-    if (existingItemIndex !== -1) {
-     
-      const updatedBasket = [...currentBasket];
-      updatedBasket[existingItemIndex].count += 1;
-      localStorage.setItem('basketItems', JSON.stringify(updatedBasket));
-    } else {
-
-      const itemToAdd = {
-        name: product.name,
-        price: product.price,
-        count: 1,
-      };
-      const updatedBasket = [...currentBasket, itemToAdd];
-      localStorage.setItem('basketItems', JSON.stringify(updatedBasket));
-    }
-  };
 
   return (
     <div className='container'>
@@ -51,7 +36,7 @@ const DetailPage = () => {
    <div className='price'>{product?.price}₺</div>
    <div>
 
-   <button className="product-add-button font-bold py-1 px-2 rounded" onClick={handleAddToBasket}> Add to Cart</button>
+   <button className="product-add-button font-bold py-1 px-2 rounded"  onClick={handleAddToCartClick}> Add to Cart</button>
 
    </div>
    <div  className='description'>{product?.description}</div>
