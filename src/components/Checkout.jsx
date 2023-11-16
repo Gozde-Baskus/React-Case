@@ -11,7 +11,7 @@ const Checkout = () => {
       <p>Checkout</p>
       <div className="filter-card">
         <div className="checkout-info">
-          Total Price: <PriceText className="product-price price-checkout">{totalItems}</PriceText>
+          Total Price: <PriceText className="product-price price-checkout">{totalPrice}</PriceText>
         </div>
         <div className="checkout-info price-vat">
           Total VAT: <PriceText>{totalVat}</PriceText>

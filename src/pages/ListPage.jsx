@@ -33,7 +33,7 @@ const ListPage = () => {
         </div>
 
         <div className="list-wrapper d-flex column flex-column">
-          <div className="flex mx-auto space-x-8">
+          <div className="flex">
             <div className="list-wrap d-flex flex-wrap">
               {pageProducts.map((product) => (
                 <ProductItem key={product.id} product={product} />

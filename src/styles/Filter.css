@@ -66,6 +66,7 @@ margin-bottom: 10px;
   width: 100%;
   margin-bottom: 5px;
   padding-left: 30px;
+  border: none;
 }
 .basket-item{
   display: flex;

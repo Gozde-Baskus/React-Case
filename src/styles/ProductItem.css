@@ -11,6 +11,9 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.product-item .item-des Button{
+border: none;
+}
 .product-image{
     width: 150px;
     height: 150px;
