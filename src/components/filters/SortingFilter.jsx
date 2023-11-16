@@ -1,17 +1,24 @@
-import React, { useMemo, useState } from "react";
+import React from "react";
 import FilterBox from "../FilterBox";
-import useSearchFilter from "../../hooks/searchFilter";
+import { useList } from "../../providers/ListProvider";
 
 const SortingFilter = ({ }) => {
-  const items = ["New to Old", "Old to New", "Low to High", "High to Low"];
-
+  const items = ["New to old", "Old to new", "Price low to high", "Price high to low"];
+  const {sortProducts,sortType } = useList();
+  const handleSortChange = (selectedSortType) => {
+   
+    sortProducts(selectedSortType); 
+  };
   return (
     <FilterBox filterType="Sort By">
       <div className="search-items">
         {items.map((item, index) => (
           <label className="search-item" key={`${index}_${item}`}>
-            <input type="radio" name="sorting" />
-            <span>{item}</span>
+            <input type="radio" name="sorting"
+            checked={sortType === item}
+             onChange={() => handleSortChange(item)} 
+          />
+            <span>{item} </span>
           </label>
         ))}
       </div>

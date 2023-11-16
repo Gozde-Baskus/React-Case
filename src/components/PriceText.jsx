@@ -1,6 +1,6 @@
 import React from "react";
 
-const PriceText = ({ children, className }) => {
+const PriceText = ({ children=0, className }) => {
   return (
     <span className={className}>
       {new Intl.NumberFormat("tr-TR", {

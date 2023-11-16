@@ -15,7 +15,7 @@ code {
 .container{
   max-width: 1320px!important;
   margin: auto;
-  padding: 30px 0!important;
+  padding: 30px!important;
 }
 body {
   background: #F9F9F9!important;
@@ -31,4 +31,42 @@ body {
 a {
   text-decoration: none!important;
   color: inherit!important;
+}
+.search-bar {
+  position: relative;
+width: 100%;
+margin-left: 20%;
+}
+.search-bar-filter {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  top: 44%;
+  left: 10px; 
+  transform: translateY(-50%);
+  color: rgb(147, 147, 147);
+}
+.basket-wrapper , .filter-wrapper{
+display: flex;
+}
+.mobile-search{
+  display: none;
+}
+@media screen and (max-width: 800px) {
+  .header .search-bar{
+display: none;
+  }
+  .list-wrap{
+    max-height: 100vh;
+    overflow-y: scroll;
+ 
+  }
+  .basket-wrapper{
+    display: none;
+  }
+  .mobile-search{
+    display: flex;
+  }
 }

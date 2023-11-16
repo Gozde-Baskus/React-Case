@@ -17,7 +17,7 @@ const Checkout = () => {
           Total VAT: <PriceText>{totalVat}</PriceText>
         </div>
         <div className="checkout-info">
-          Total:{" "}
+          Total:{0}
           <PriceText>{totalPrice}</PriceText>
         </div>
         <Button variant="primary">Checkout</Button>

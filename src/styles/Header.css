@@ -12,6 +12,11 @@
     align-items: center;
     max-width: 1320px;
     margin: auto;
+    padding: 0 30px;
+  }
+  .header-container .logo-search-wrap{
+    flex: 0.7;
+
   }
   
   .logo {
@@ -28,23 +33,12 @@
   
   .nav-item {
     color: white;
+    display: flex;
   }
+  .nav-item svg{margin-top: 4px; margin-right: 5px; }
   
   /* Responsive Stiller */
-  @media screen and (max-width: 768px) {
-    .header {
-      padding: 5px;
-      height: auto;
-    }
-  
-    .header-container {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .nav {
-      flex-direction: column;
-      gap: 10px;
-    }
+  @media screen and (max-width: 800px) {
+   
   }
   
