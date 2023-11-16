@@ -16,7 +16,7 @@ const ProductItem = ({ product }) => {
     <div className="product-item d-flex">
       <div className="item-des ">
         <Link to={`/detail/${id}`}>
-          <img className="product-image"  />
+          <img className="product-image"  src={image} />
           <div className="">
             <PriceText className="product-price">{price}</PriceText>
             <div className="product-name">{name}</div>

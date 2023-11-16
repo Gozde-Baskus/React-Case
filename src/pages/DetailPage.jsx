@@ -27,10 +27,10 @@ const DetailPage = () => {
 
   return (
     <div className='container'>
-    <div className='d-flex '>
+    <div className='d-flex detail-wrapper '>
     
       <div className='detail-card d-flex '>
-   <div className='detail-img'> </div>
+   <div className='detail-img'> <img  src={product?.image} /></div>
    <div className='detail-info'> 
    <div className='name'>{product?.name}</div>
    <div className='price'>{product?.price}₺</div>
