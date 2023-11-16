@@ -1,7 +1,16 @@
 import React, { useMemo } from "react";
 import { useContext, useEffect, useState } from "react";
 
-const Context = React.createContext();
+const Context = React.createContext({
+  basket: [],
+  onAddToCart: () => {},
+  handleIncrement: () => {},
+  handleDecrement: () => {},
+  totalItems: 0,
+  totalPrice: 0,
+  totalVat: 0,
+  
+});
 
 export const useBasket = () => {
   return useContext(Context);

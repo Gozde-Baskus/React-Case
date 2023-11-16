@@ -100,4 +100,7 @@ input[type="radio"] {
   .mobile-search{
     display: flex;
   }
+  .page-wrapper{
+    flex-direction: column;
+  }
 }

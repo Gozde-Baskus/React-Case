@@ -19,6 +19,9 @@
   flex-direction: column;
   padding-left: 30px;
 }
+.detail-info Button{
+  border: none;
+}
 .detail-info  .price{
   color: #2A59FE;
   font-size: 24px;

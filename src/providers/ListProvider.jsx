@@ -2,7 +2,27 @@ import React, { useMemo } from "react";
 import { useContext, useEffect, useState } from "react";
 import apiService from "../services/apiService";
 
-const Context = React.createContext();
+const Context = React.createContext({
+  products: [],
+  filteredProducts: [],
+  pageProducts: [],
+  filters: {},
+  brandList: [],
+  modelList: [],
+  setFilters: () => {},
+  currentPage: 1,
+  itemsPerPage: 12,
+  setCurrentPage: () => {},
+  sortType: "",
+  setSortType: () => {},
+  selectedFilter: {
+    brand: [],
+    model: [],
+  },
+  updateSelectedFilter: () => {},
+  handleSearchGeneralChange: () => {},
+  searchGeneral: "",
+});
 
 export const useList = () => {
   return useContext(Context);

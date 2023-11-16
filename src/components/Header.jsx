@@ -13,9 +13,8 @@ const Header = () => {
     <div className="header">
       <div className="header-container">
         <div className="logo-search-wrap d-flex">
-          <div className="logo">
-            {" "}
-            <Link to={`/`}>Eteration</Link>
+          <div className="logo">            
+            <Link to="/">Eteration</Link>
           </div>
 
           <div className="search-bar">
