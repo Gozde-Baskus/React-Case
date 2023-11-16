@@ -23,7 +23,6 @@ code {
 body {
   background: #F9F9F9!important;
   font-family: 'Montserrat';
-
 }
 .list-wrapper{
   flex: 1;
@@ -38,13 +37,12 @@ a {
 }
 .search-bar {
   position: relative;
-width: 100%;
-margin-left: 20%;
+  width: 100%;
+  margin-left: 20%;
 }
 .search-bar-filter {
   position: relative;
 }
-
 .search-icon {
   position: absolute;
   top: 44%;
@@ -53,14 +51,14 @@ margin-left: 20%;
   color: rgb(147, 147, 147);
 }
 .basket-wrapper , .filter-wrapper{
-display: flex;
+  display: flex;
 }
 .mobile-search{
   display: none;
 }
 @media screen and (max-width: 880px) {
   .header .search-bar{
-display: none;
+  display: none;
   }
   .list-wrap{
     max-height: calc(100vh - 250px);

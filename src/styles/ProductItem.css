@@ -2,17 +2,15 @@
     background-color: white;
     padding: 10px;
     margin: 20px 10px;
-    max-width: 160px;
+    max-width: 170px;
 }
-
-
 .product-item .item-des{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 .product-item .item-des Button{
-border: none;
+    border: none;
 }
 .product-image{
     width: 150px;
@@ -20,21 +18,18 @@ border: none;
     background-color: #C4C4C4;
 }
 .product-price{
-color: #2A59FE;
-font-size: 14px;
-font-weight: 500;
-margin: 10px 0;
+    color: #2A59FE;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 10px 0;
 }
 .price-checkout{
-  
     font-weight: 700;
-    
     }
     .price-vat{
-  color: gray;
-        font-weight: 400;
-        font-size: 12px;
-        
+    color: gray;
+    font-weight: 400;
+    font-size: 12px;  
         }
 .product-name{
     font-size: 14px;

@@ -3,9 +3,7 @@
 .header {
     background-color: #2A59FE;
     padding: 7px;
-
   }
-  
   .header-container {
     display: flex;
     justify-content: space-between;
@@ -16,19 +14,17 @@
   }
   .header-container .logo-search-wrap{
     flex: 0.7;
-
   }
-  
   .logo {
     font-size: 1.5rem;
     font-weight: bold;
     color: #ffffff;
     text-decoration: none;
   }
-  
   .nav {
     display: flex;
     gap: 20px;
+    width: 200px;
   }
   
   .nav-item {
@@ -36,8 +32,7 @@
     display: flex;
   }
   .nav-item svg{margin-top: 4px; margin-right: 5px; }
-  
-  /* Responsive Stiller */
+
   @media screen and (max-width: 880px) {
    
   }
