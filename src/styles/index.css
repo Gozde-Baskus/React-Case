@@ -17,6 +17,9 @@ code {
   margin: auto;
   padding: 30px!important;
 }
+.page-wrapper{
+  gap: 25px;
+}
 body {
   background: #F9F9F9!important;
   font-family: 'Montserrat';
@@ -26,7 +29,8 @@ body {
   flex: 1;
 }
 .list-wrap{
-  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 a {
   text-decoration: none!important;
@@ -54,12 +58,12 @@ display: flex;
 .mobile-search{
   display: none;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 880px) {
   .header .search-bar{
 display: none;
   }
   .list-wrap{
-    max-height: 100vh;
+    max-height: calc(100vh - 250px);
     overflow-y: scroll;
  
   }

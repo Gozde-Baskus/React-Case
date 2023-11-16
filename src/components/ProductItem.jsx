@@ -4,7 +4,7 @@ import { useBasket } from "../providers/BasketProvider";
 import PriceText from "./PriceText";
 
 const ProductItem = ({ product }) => {
-  const { name, image, price, id } = product;
+  const { name, image, price, id ,model} = product;
 
   const { onAddToCart } = useBasket();
 
@@ -14,12 +14,13 @@ const ProductItem = ({ product }) => {
 
   return (
     <div className="product-item d-flex">
-      <div className="max-w-xs  overflow-hidden ">
+      <div className="item-des ">
         <Link to={`/detail/${id}`}>
-          <img className="product-image" />
+          <img className="product-image"  />
           <div className="">
             <PriceText className="product-price">{price}</PriceText>
             <div className="product-name">{name}</div>
+            <div className="mb-3">{model}</div>
           </div>
         </Link>
         <button

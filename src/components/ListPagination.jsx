@@ -3,11 +3,11 @@ import { Pagination } from "react-bootstrap";
 import { useList } from "../providers/ListProvider";
 
 const ListPagination = () => {
-  const { products, itemsPerPage, setCurrentPage, currentPage } = useList();
+  const { filteredProducts, itemsPerPage, setCurrentPage, currentPage } = useList();
 
   const totalPages = useMemo(
-    () => Math.ceil(products.length / itemsPerPage),
-    [products]
+    () => Math.ceil(filteredProducts.length / itemsPerPage),
+    [filteredProducts]
   );
 
   const pageNumbers = [];

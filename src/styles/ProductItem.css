@@ -2,6 +2,14 @@
     background-color: white;
     padding: 10px;
     margin: 20px 10px;
+    max-width: 160px;
+}
+
+
+.product-item .item-des{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .product-image{
     width: 150px;
@@ -14,10 +22,21 @@ font-size: 14px;
 font-weight: 500;
 margin: 10px 0;
 }
+.price-checkout{
+  
+    font-weight: 700;
+    
+    }
+    .price-vat{
+  color: gray;
+        font-weight: 400;
+        font-size: 12px;
+        
+        }
 .product-name{
     font-size: 14px;
     font-weight: 500;
-    margin: 10px 0;
+    margin-top: 10px ;
 }
 .product-add-button{
     background-color:#2A59FE;

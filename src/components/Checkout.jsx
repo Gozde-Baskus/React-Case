@@ -11,15 +11,12 @@ const Checkout = () => {
       <p>Checkout</p>
       <div className="filter-card">
         <div className="checkout-info">
-          Products Total: <PriceText>{totalItems}</PriceText>
+          Total Price: <PriceText className="product-price price-checkout">{totalItems}</PriceText>
         </div>
-        <div className="checkout-info">
+        <div className="checkout-info price-vat">
           Total VAT: <PriceText>{totalVat}</PriceText>
         </div>
-        <div className="checkout-info">
-          Total:{0}
-          <PriceText>{totalPrice}</PriceText>
-        </div>
+        
         <Button variant="primary">Checkout</Button>
       </div>
     </div>

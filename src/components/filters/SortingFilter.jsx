@@ -4,10 +4,9 @@ import { useList } from "../../providers/ListProvider";
 
 const SortingFilter = ({ }) => {
   const items = ["New to old", "Old to new", "Price low to high", "Price high to low"];
-  const {sortProducts,sortType } = useList();
-  const handleSortChange = (selectedSortType) => {
-   
-    sortProducts(selectedSortType); 
+  const {setSortType,sortType } = useList();
+  const handleSortChange = (selectedSortType) => {   
+    setSortType(selectedSortType); 
   };
   return (
     <FilterBox filterType="Sort By">

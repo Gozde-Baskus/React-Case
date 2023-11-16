@@ -9,27 +9,20 @@ import ModelFilter from "../components/filters/ModelFilter";
 import SortingFilter from "../components/filters/SortingFilter";
 import { useList } from "../providers/ListProvider";
 import ListPagination from "../components/ListPagination";
-import { IoSearch ,IoBagRemoveOutline,IoPersonOutline } from 'react-icons/io5';
-
+import { IoSearch, IoBagRemoveOutline, IoPersonOutline } from "react-icons/io5";
 
 const ListPage = () => {
   const { pageProducts } = useList();
 
   return (
     <div className="container">
-      <div  className="search-bar mobile-search">
-        <input
-          type="text"
-          placeholder="Search"
-          className="brand-search"
-       
-        />
-         <span className="search-icon">
-        <IoSearch />
-      </span>
-         
-        </div>
-      <div className="d-flex ">
+      <div className="search-bar mobile-search">
+        <input type="text" placeholder="Search" className="brand-search" />
+        <span className="search-icon">
+          <IoSearch />
+        </span>
+      </div>
+      <div className="d-flex page-wrapper">
         <div className="filter-wrapper flex-column">
           <SortingFilter />
           <BrandFilter />
@@ -37,8 +30,8 @@ const ListPage = () => {
         </div>
 
         <div className="list-wrapper d-flex column flex-column">
-          <div className="flex justify-center mx-auto space-x-8">
-            <div className="list-wrap d-flex flex-wrap justify-center">
+          <div className="flex mx-auto space-x-8">
+            <div className="list-wrap d-flex flex-wrap">
               {pageProducts.map((product) => (
                 <ProductItem key={product.id} product={product} />
               ))}

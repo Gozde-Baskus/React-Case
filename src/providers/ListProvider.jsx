@@ -8,58 +8,47 @@ export const useList = () => {
   return useContext(Context);
 };
 
-
-
 export const ListProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
-  const [selectedFilter, setSelectedFilter] = useState({ brand: [], model: [] });
+  const [selectedFilter, setSelectedFilter] = useState({
+    brand: [],
+    model: [],
+  });
   const [filters, setFilters] = useState({});
   const [sortType, setSortType] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchGeneral, setSearchGeneral] = useState("");
   const itemsPerPage = 12;
 
+  // products isteği
   const loadProducts = async () => {
     const response = await apiService.get("/products");
     setProducts(response.data);
   };
 
-  const brandList = useMemo(() => Array.from(new Set(products.map((product) => product.brand))), [products]);
-  const modelList = useMemo(() => Array.from(new Set(products.map((product) => product.model))), [products]);
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-
-  const pageProducts = products.slice(indexOfFirstItem, indexOfLastItem);
-
-  const sortProducts = (sortBy) => {
-    const sortedProducts = [...products];
-
-    if (sortBy === "Price low to high") {
-      sortedProducts.sort((a, b) => a.price - b.price);
-    } else if (sortBy === "Price high to low") {
-      sortedProducts.sort((a, b) => b.price - a.price);
-    } else if (sortBy === "New to old") {
-      sortedProducts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-    } else if (sortBy === "Old to new") {
-      sortedProducts.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
-    }
-
-    setProducts(sortedProducts);
-    setSortType(sortBy);
+  // header search
+  const handleSearchGeneralChange = (event) => {
+    const searchTerm = event.target.value.trim();
+    setSearchGeneral(searchTerm);
   };
 
+  // filter brand and model
   const updateSelectedFilter = (filterType, selectedValues) => {
     setSelectedFilter((prevSelectedFilter) => {
       let updatedSelectedFilter;
 
       if (Array.isArray(prevSelectedFilter[filterType])) {
         const existingValues = prevSelectedFilter[filterType];
-        const uniqueValues = Array.from(new Set([...existingValues, ...selectedValues]));
+        const uniqueValues = Array.from(
+          new Set([...existingValues, ...selectedValues])
+        );
 
         if (existingValues.length === uniqueValues.length) {
           updatedSelectedFilter = {
             ...prevSelectedFilter,
-            [filterType]: existingValues.filter(value => !selectedValues.includes(value)),
+            [filterType]: existingValues.filter(
+              (value) => !selectedValues.includes(value)
+            ),
           };
         } else {
           updatedSelectedFilter = {
@@ -73,32 +62,66 @@ export const ListProvider = ({ children }) => {
           [filterType]: selectedValues,
         };
       }
-
-      localStorage.setItem("selectedFilter", JSON.stringify(updatedSelectedFilter));
-
       return updatedSelectedFilter;
     });
   };
 
-  const filterProducts = () => {
-    let filteredProducts = [...products];
+  const filteredProducts = [...products]
+    .filter((item) => {
+      if (
+        selectedFilter.brand.length > 0 &&
+        !selectedFilter.brand.includes(item.brand)
+      )
+        return false;
+      if (
+        selectedFilter.model.length > 0 &&
+        !selectedFilter.model.includes(item.model)
+      )
+        return false;
 
-    if (selectedFilter.brand.length > 0) {
-      filteredProducts = filteredProducts.filter(product => selectedFilter.brand.includes(product.brand));
-    }
+      if (!searchGeneral) return true;
+      if (item.name.toLowerCase().includes(searchGeneral)) return true;
+      if (item.price.toString().includes(searchGeneral)) return true;
+      if (item.brand.toLowerCase().includes(searchGeneral)) return true;
+      if (item.model.toLowerCase().includes(searchGeneral)) return true;
+      return false;
+    })
+    .sort((a, b) => {
+      switch (sortType) {
+        case "Price low to high":
+          return a.price - b.price;
+        case "Price high to low":
+          return b.price - a.price;
+        case "New to old":
+          return new Date(b.createdAt) - new Date(a.createdAt);
+        case "Old to new":
+          return new Date(a.createdAt) - new Date(b.createdAt);
+        default:
+          return 0;
+      }
+    });
 
-    if (selectedFilter.model.length > 0) {
-      filteredProducts = filteredProducts.filter(product => selectedFilter.model.includes(product.model));
-    }
+  const brandList = useMemo(
+    () => Array.from(new Set(products.map((product) => product.brand))),
+    [products]
+  );
+  const modelList = useMemo(
+    () => Array.from(new Set(products.map((product) => product.model))),
+    [products]
+  );
 
-    return filteredProducts;
-  };
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
+  const pageProducts = filteredProducts.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
   useEffect(() => {
     const storedSortType = localStorage.getItem("sortType");
     if (storedSortType) {
       setSortType(storedSortType);
-      sortProducts(storedSortType);
     }
 
     const storedSelectedFilter = localStorage.getItem("selectedFilter");
@@ -110,14 +133,15 @@ export const ListProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    const filteredProducts = filterProducts();
-    setProducts(filteredProducts);
-  }, [selectedFilter]);
+    localStorage.setItem("selectedFilter", JSON.stringify(selectedFilter));
+    localStorage.setItem("sortType", sortType);
+  }, [selectedFilter, sortType]);
 
   return (
     <Context.Provider
       value={{
         products,
+        filteredProducts,
         pageProducts,
         filters,
         brandList,
@@ -127,9 +151,11 @@ export const ListProvider = ({ children }) => {
         itemsPerPage,
         setCurrentPage,
         sortType,
-        sortProducts,
+        setSortType,
         selectedFilter,
         updateSelectedFilter,
+        handleSearchGeneralChange,
+        searchGeneral,
       }}
     >
       {children}

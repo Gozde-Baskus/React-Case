@@ -26,17 +26,18 @@ export const BasketProvider = ({ children }) => {
       count: 1,
       id,
     };
-
+  
     const existingItemIndex = basket.findIndex((item) => item.id === id);
-
+  
     if (existingItemIndex === -1) {
-      setBasket([...basket, itemToAdd]);
+      setBasket([itemToAdd, ...basket]);
     } else {
       const updatedBasket = [...basket];
       updatedBasket[existingItemIndex].count++;
       setBasket(updatedBasket);
     }
   };
+  
 
   const handleIncrement = (id) => {
     const updatedBasket = basket.map((item) =>
