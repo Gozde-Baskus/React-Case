@@ -13,11 +13,14 @@ import { IoSearch, IoBagRemoveOutline, IoPersonOutline } from "react-icons/io5";
 
 const ListPage = () => {
   const { pageProducts } = useList();
-
+  const { searchGeneral, handleSearchGeneralChange } = useList();
   return (
     <div className="container">
       <div className="search-bar mobile-search">
-        <input type="text" placeholder="Search" className="brand-search" />
+        <input type="text" placeholder="Search" className="brand-search"
+         value={searchGeneral}
+         onChange={handleSearchGeneralChange}
+        />
         <span className="search-icon">
           <IoSearch />
         </span>
